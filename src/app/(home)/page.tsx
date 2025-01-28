@@ -1,7 +1,7 @@
 "use client";
 
-import { HttpClient } from "../infra/http/HttpClient";
-import { GetMoviesService } from "../service/Movies/GetMoviesService";
+import { HttpClient } from "../../infra/http/HttpClient";
+import { GetMoviesService } from "../../service/Movies/GetMoviesService";
 import { useHomeModel } from "./home.model";
 import { HomeView } from "./home.view";
 
@@ -15,7 +15,7 @@ export default function Home() {
     });
 
     return (
-        <main>
+        <main className="grow">
             <HomeView {...methods} />
         </main>
     );

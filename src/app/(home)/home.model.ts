@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query"
-import { IGetMoviesService } from "../service/Movies/GetMoviesService"
+import { IGetMoviesService } from "../../service/Movies/GetMoviesService"
 import { useState } from "react"
 
 

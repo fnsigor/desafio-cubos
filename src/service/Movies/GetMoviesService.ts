@@ -1,4 +1,4 @@
-import { HttpMethod, IHttpClient } from "@/app/infra/http/httpClientContract";
+import { HttpMethod, IHttpClient } from "@/infra/http/httpClientContract";
 
 export type Movie = {
   adult: boolean

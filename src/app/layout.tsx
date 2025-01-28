@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ReactQueryProvider } from "./lib/react-query";
-import { Header } from "./components/Header";
+import { ReactQueryProvider } from "../lib/react-query";
+import { Header } from "@/app/components/Header";
+import { ThemeProvider } from "@/app/components/ThemeProvider";
 
 const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
+    src: "../fonts/GeistVF.woff",
     variable: "--font-geist-sans",
     weight: "100 900",
 });
 const geistMono = localFont({
-    src: "./fonts/GeistMonoVF.woff",
+    src: "../fonts/GeistMonoVF.woff",
     variable: "--font-geist-mono",
     weight: "100 900",
 });
@@ -28,13 +29,17 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased darkmode text-text-primary bg-bg flex flex-col min-h-screen`}
             >
-                <Header />
-                <ReactQueryProvider>{children}</ReactQueryProvider>
-                <footer>
-                    <p>2023 © Todos os direitos reservados a Cubos Movies</p>
-                </footer>
+                <ThemeProvider>
+                    <Header />
+                    <ReactQueryProvider>{children}</ReactQueryProvider>
+                    <footer className="p-5">
+                        <p className="text-text-secondary font-bold text-center">
+                            2023 © Todos os direitos reservados a Cubos Movies
+                        </p>
+                    </footer>
+                </ThemeProvider>
             </body>
         </html>
     );
