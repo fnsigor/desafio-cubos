@@ -1,4 +1,4 @@
-import { Input } from "../components/Input";
+import { Input } from "../../components/Input";
 import FilterIcon from "@/assets/filter.svg";
 import { useHomeModel } from "./home.model";
 
@@ -45,6 +45,7 @@ export const HomeView = ({
                             </li>
                         ))}
                     </ul>
+                    
                 </>
             )}
         </section>
