@@ -21,12 +21,12 @@ interface IReturn {
   page: number
   results: Movie[]
   total_pages: number,
-  total_result: number
+  total_results: number
 }
 
 type Params = {
   endpoint?: string,
-
+  page?: number
 }
 
 export interface IGetMoviesService {
@@ -38,9 +38,13 @@ export class GetMoviesService implements IGetMoviesService {
   constructor(private readonly httpClient: IHttpClient) { }
 
   async execute(params?: Params) {
+
+    const page = params?.page ?? 1
+
     const responseGetMovies = await this.httpClient.sendRequest<IReturn, null>({
       method: HttpMethod.GET,
-      endpoint: params?.endpoint ?? '/discover/movie',
+      endpoint: params?.endpoint ?? `/discover/movie?page=${page}`,
+      
     })
     return responseGetMovies
 

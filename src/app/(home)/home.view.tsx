@@ -1,6 +1,7 @@
 import { Input } from "../../components/Input";
 import FilterIcon from "@/assets/filter.svg";
 import { useHomeModel } from "./home.model";
+import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 
 type HomeViewProps = ReturnType<typeof useHomeModel>;
 
@@ -11,8 +12,8 @@ export const HomeView = ({
     error,
 }: HomeViewProps) => {
     return (
-        <section className="p-4">
-            <nav className="flex gap-3 mb-4">
+        <section className="">
+            <nav className="flex gap-3 mb-4 px-4">
                 <Input
                     name="filtro"
                     id="filter"
@@ -26,7 +27,7 @@ export const HomeView = ({
             {isError && <div>deu pau</div>}
             {data && (
                 <>
-                    <ul className="grid grid-cols-2 gap-4">
+                    <ul className="grid grid-cols-2 gap-4 mb-6 bg-mauve-3 p-4 ">
                         {data.results.map((movie) => (
                             <li
                                 key={movie.id}
@@ -45,7 +46,12 @@ export const HomeView = ({
                             </li>
                         ))}
                     </ul>
-                    
+                    <PaginationWithLinks
+                        page={data.page}
+                        pageSize={20}
+                        totalCount={data.total_results}
+                        totalPages={data.total_pages}
+                    />
                 </>
             )}
         </section>

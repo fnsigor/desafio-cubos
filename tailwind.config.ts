@@ -43,6 +43,7 @@ const config: Config = {
   			'primary-dark-disabled': 'var(--mauve-a3)',
   			'disabled': 'var(--mauve-a3)',
   			'mauve-2': 'var(--mauve-2)',
+  			'mauve-3': 'var(--mauve-3)',
   			'mauve-6': 'var(--mauve-6)',
   			'mauve-7': 'var(--mauve-7)',
   			background: 'hsl(var(--background))',
