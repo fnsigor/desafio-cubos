@@ -99,7 +99,7 @@ export function PaginationWithLinks({
 
       if (page > 3) {
         items.push(
-          <PaginationItem key="ellipsis-start">
+          <PaginationItem key="ellipsis-start" className="p-0.5 bg-primary-light text-text-primary hover:bg-primary-light-hover">
             <PaginationEllipsis />
           </PaginationItem>,
         );
@@ -120,7 +120,7 @@ export function PaginationWithLinks({
 
       if (page < totalPageCount - 2) {
         items.push(
-          <PaginationItem key="ellipsis-end">
+          <PaginationItem key="ellipsis-end" className="p-0.5 bg-primary-light text-text-primary hover:bg-primary-light-hover">
             <PaginationEllipsis />
           </PaginationItem>,
         );
@@ -156,7 +156,7 @@ export function PaginationWithLinks({
               href={buildLink(Math.max(page - 1, 1))}
               aria-disabled={page === 1}
               tabIndex={page === 1 ? -1 : undefined}
-              className={page === 1 ? "pointer-events-none opacity-50" : undefined}
+              className={page === 1 ? "pointer-events-none bg-mauve-7 text-text-secondary hover:bg-mauve-6" : undefined}
             />
           </PaginationItem>
           {renderPageNumbers()}
@@ -165,7 +165,7 @@ export function PaginationWithLinks({
               href={buildLink(Math.min(page + 1, totalPageCount))}
               aria-disabled={page === totalPageCount}
               tabIndex={page === totalPageCount ? -1 : undefined}
-              className={page === totalPageCount ? "pointer-events-none opacity-50" : undefined}
+              className={page === totalPageCount ? "pointer-events-none bg-mauve-7 text-text-secondary hover:bg-mauve-6" : undefined}
             />
           </PaginationItem>
         </PaginationContent>
