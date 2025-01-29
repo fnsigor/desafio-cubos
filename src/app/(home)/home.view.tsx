@@ -2,6 +2,8 @@ import { Input } from "../../components/Input";
 import FilterIcon from "@/assets/filter.svg";
 import { useHomeModel } from "./home.model";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
+import { MovieCard } from "./components/MovieCard";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type HomeViewProps = ReturnType<typeof useHomeModel>;
 
@@ -13,7 +15,7 @@ export const HomeView = ({
 }: HomeViewProps) => {
     return (
         <section className="">
-            <nav className="flex gap-3 mb-4 px-4">
+            <nav className="flex gap-3 mb-4 px-4 max-w-2xl mx-auto">
                 <Input
                     name="filtro"
                     id="filter"
@@ -23,36 +25,31 @@ export const HomeView = ({
                     <FilterIcon />
                 </button>
             </nav>
-            {isPending && <div>buscando dados</div>}
-            {isError && <div>deu pau</div>}
+            {isPending && (
+                 <div className="space-y-2 px-4">
+                 <Skeleton className="h-6 " />
+                 <Skeleton className="h-6 " />
+                 <Skeleton className="h-6 " />
+                 <Skeleton className="h-6 " />
+                 <Skeleton className="h-6 " />
+             </div>
+            )}
+            {isError && <p className="text-center">deu pau</p>}
             {data && (
-                <>
-                    <ul className="grid grid-cols-2 gap-4 mb-6 bg-mauve-3 p-4 ">
+                <div className="lg:px-4 ">
+                    <ul className="grid grid-cols-2 gap-4 mb-6 bg-mauve-3 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                         {data.results.map((movie) => (
-                            <li
-                                key={movie.id}
-                                style={{
-                                    backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.poster_path})`,
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                }}
-                                className="h-72 flex flex-col justify-end p-4 relative"
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-
-                                <h6 className="text-text-primary font-bold text-sm uppercase z-10">
-                                    {movie.title}
-                                </h6>
-                            </li>
+                            <MovieCard movie={movie} key={movie.id} />
                         ))}
                     </ul>
+                     
                     <PaginationWithLinks
                         page={data.page}
                         pageSize={20}
                         totalCount={data.total_results}
                         totalPages={data.total_pages}
                     />
-                </>
+                </div>
             )}
         </section>
     );

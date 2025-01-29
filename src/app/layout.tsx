@@ -32,13 +32,16 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased darkmode text-text-primary bg-bg flex flex-col min-h-screen`}
             >
                 <ThemeProvider>
-                    <Header />
-                    <ReactQueryProvider>{children}</ReactQueryProvider>
-                    <footer className="p-5">
-                        <p className="text-text-secondary font-bold text-center">
-                            2023 © Todos os direitos reservados a Cubos Movies
-                        </p>
-                    </footer>
+                    <ReactQueryProvider>
+                        <Header />
+                        {children}
+                        <footer className="p-5">
+                            <p className="text-text-secondary font-bold text-center">
+                                2023 © Todos os direitos reservados a Cubos
+                                Movies
+                            </p>
+                        </footer>
+                    </ReactQueryProvider>
                 </ThemeProvider>
             </body>
         </html>
