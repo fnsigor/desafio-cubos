@@ -23,7 +23,7 @@ export class GetGenresService implements IGetGenresService {
 
     const responseGetMovies = await this.httpClient.sendRequest<IReturn, null>({
       method: HttpMethod.GET,
-      endpoint: 'https://api.themoviedb.org/3/genre/movie/list?language=pt-BR',
+      endpoint: '/genre/movie/list?language=pt-BR',
       
     })
     return responseGetMovies

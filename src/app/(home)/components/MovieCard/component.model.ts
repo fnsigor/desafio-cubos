@@ -17,6 +17,7 @@ export const useMovieCardModel = ({ getGenres }: ComponentProps) => {
     staleTime: 3600 * (24 * 7)
   })
 
+  console.log('data', dataGenres)
 
   return {
     isPendingGenres,

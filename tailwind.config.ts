@@ -44,8 +44,12 @@ const config: Config = {
   			'disabled': 'var(--mauve-a3)',
   			'mauve-2': 'var(--mauve-2)',
   			'mauve-3': 'var(--mauve-3)',
+  			'mauve-4': 'var(--mauve-4)',
+  			'mauve-5': 'var(--mauve-5)',
   			'mauve-6': 'var(--mauve-6)',
   			'mauve-7': 'var(--mauve-7)',
+  			'mauve-8': 'var(--mauve-8)',
+  			'mauve-9': 'var(--mauve-9)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

@@ -4,6 +4,7 @@ import { useHomeModel } from "./home.model";
 import { PaginationWithLinks } from "@/components/ui/pagination-with-links";
 import { MovieCard } from "./components/MovieCard";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 type HomeViewProps = ReturnType<typeof useHomeModel>;
 
@@ -26,20 +27,22 @@ export const HomeView = ({
                 </button>
             </nav>
             {isPending && (
-                 <div className="space-y-2 px-4">
-                 <Skeleton className="h-6 " />
-                 <Skeleton className="h-6 " />
-                 <Skeleton className="h-6 " />
-                 <Skeleton className="h-6 " />
-                 <Skeleton className="h-6 " />
-             </div>
+                <div className="space-y-2 px-4">
+                    <Skeleton className="h-6 " />
+                    <Skeleton className="h-6 " />
+                    <Skeleton className="h-6 " />
+                    <Skeleton className="h-6 " />
+                    <Skeleton className="h-6 " />
+                </div>
             )}
             {isError && <p className="text-center">deu pau</p>}
             {data && (
                 <div className="lg:px-4 ">
                     <ul className="grid grid-cols-2 gap-4 mb-6 bg-mauve-3 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                         {data.results.map((movie) => (
-                            <MovieCard movie={movie} key={movie.id} />
+                            <Link key={movie.id} href={`/movie/${movie.id}`}>
+                                <MovieCard movie={movie} />
+                            </Link>
                         ))}
                     </ul>
                      
